@@ -16,7 +16,7 @@ function buildMetadata(sample) {
         if (key == 'WFREQ')
         {
           // Enter the washing frequency between 0 and 180
-          var level = value*20;
+          var level = value*22;
           // Trig to calc meter point
           var degrees = 180 - level,
               radius = .5;
@@ -131,11 +131,17 @@ function buildCharts(sample) {
         size: data2.sample_values,
         },
         text: data2.otu_labels,
-        hoverinfo : 'x+y+text',
+        hoverinfo : 'y+x+text',
+        hovermode:'closest',
         type: 'scatter'
       };
       let data1 = [trace2];
-      Plotly.newPlot("bubble",data1);
+      var layout = {
+        xaxis: {
+          title: 'OTC ID',
+        }
+      }
+      Plotly.newPlot("bubble",data1,layout);
       });
       }
 
